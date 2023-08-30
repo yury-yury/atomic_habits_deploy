@@ -124,16 +124,16 @@ $ sudo service redis-server start
 
 6. Применить миграции
 ```bash
-python manage.py migrate
+$ python manage.py migrate
 ```
 7. Запустить сервер
 ```bash
-python manage.py runserver
+$ python manage.py runserver
 ```
 8. Запустить Celery
 ```bash
-celery -A habit_tracker worker -l INFO
+$ celery -A habit_tracker worker -l INFO
 ```
 ```bash
-celery -A habit_tracker beat -l info
+$ celery -A habit_tracker beat -l info
 ```
