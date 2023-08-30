@@ -1,6 +1,12 @@
+from rest_framework.routers import DefaultRouter
+from django.urls import path
+
+from main.views import HabitsViewSet, HabitsListView
+
+router = DefaultRouter()
+router.register('habits', HabitsViewSet, basename='habits')
+
+
 urlpatterns = [
-    # path('signup', UserCreateView.as_view()),
-    # path('login', LoginView.as_view()),
-    # path('profile', ProfileView.as_view()),
-    # path('update_password', UpdatePasswordView.as_view()),
-]
+    path('public_habits/', HabitsListView.as_view(), name='habits_list'),
+              ] + router.urls

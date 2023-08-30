@@ -50,9 +50,9 @@ class UserCreateSerializer(serializers.ModelSerializer):
         """
         user: User = User(
             username=validated_data['username'],
-            # first_name=validated_data['first_name'],
-            # last_name=validated_data['last_name'],
-            # email=validated_data['email'],
+            first_name=validated_data.get('first_name', ''),
+            last_name=validated_data.get('last_name', ''),
+            email=validated_data.get('email', ''),
         )
         user.set_password(validated_data['password'])
         user.save()
@@ -66,7 +66,7 @@ class LoginSerializer(serializers.ModelSerializer):
     login instance of User class.
     """
     username = serializers.CharField()
-    password = serializers.CharField()
+    password = serializers.CharField(write_only=True)
 
     class Meta:
         """
@@ -74,8 +74,7 @@ class LoginSerializer(serializers.ModelSerializer):
         defines the necessary parameters for the serializer to function.
         """
         model = User
-        # fields: str = '__all__'
-        exclude = ['password', ]
+        fields: str = '__all__'
 
     def create(self, validated_data) -> User:
         """
@@ -143,4 +142,3 @@ class UpdatePasswordSerializer(serializers.Serializer):
         instance.password = make_password(validated_data['new_password'])
         instance.save(update_fields=('password',))
         return instance
-
