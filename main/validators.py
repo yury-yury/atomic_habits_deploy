@@ -16,9 +16,7 @@ def habit_validators(value: Dict[str, Any]) -> None:
     if value.get('execution_time') > time(00, 2):
         raise serializers.ValidationError('Время выполнения должно быть не больше 120 секунд.')
 
-    if ('related_habit' in value.keys()
-            and value.get('related_habit') is not None
-            and not value.get('related_habit').is_pleasant):
+    if value.get('related_habit', None) is not None and not value.get('related_habit').is_pleasant:
         raise serializers.ValidationError('В связанные привычки могут попадать только привычки с признаком приятной '
                                           'привычки.')
 
