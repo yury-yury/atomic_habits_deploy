@@ -99,7 +99,7 @@ class UserSerializer(serializers.ModelSerializer):
         defines the necessary parameters for the serializer to function.
         """
         model = User
-        fields: List[str] = ['id', 'username', 'first_name', 'last_name', 'email']
+        fields: List[str] = ['id', 'username', 'first_name', 'last_name', 'email', 'chat_id']
 
 
 class UpdatePasswordSerializer(serializers.Serializer):
