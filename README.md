@@ -28,6 +28,7 @@ https://docs.docker.com/engine/install/ubuntu/
 ```
 2. Создать файл `.env` в корневой директории проекта и прописать в нем значение следующих переменных:
 
+```
 • SECRET_KEY=...
 • DB_HOST="postgres"
 • DB_PORT=5432
@@ -35,6 +36,7 @@ https://docs.docker.com/engine/install/ubuntu/
 • DB_USER=...
 • DB_PASSWORD=...
 • TG_TOKEN=...
+```
 
 3. Создать образ приложения с помощью команды:
 ```bash
